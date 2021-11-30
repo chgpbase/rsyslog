@@ -98,6 +98,8 @@ doFunc_http_request(struct cnffunc *__restrict__ const func,
 	curl_easy_setopt(handle, CURLOPT_NOSIGNAL, TRUE);
 	curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, curlResult);
 	curl_easy_setopt(handle, CURLOPT_WRITEDATA, func);
+	//off check ssl cert
+	curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 0);
 
 	curl_easy_setopt(handle, CURLOPT_URL, url);
 	res = curl_easy_perform(handle);
